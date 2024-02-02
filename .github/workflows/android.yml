@@ -24,6 +24,10 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: gradle :app:assembleDebug
-    - name: ls
-      run: ls -l /home/runner/work/action_build_biliclient/action_build_biliclient/out
+      run: |
+          gradle :app:assembleDebug
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+          name: app-debug
+          path: out/app-debug.*
