@@ -25,3 +25,5 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: gradle :app:assembleDebug
+    - name: ls
+      run: ls -l /home/runner/work/action_build_biliclient/action_build_biliclient/out
