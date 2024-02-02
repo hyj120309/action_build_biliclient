@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Git clone BiliClient
-      run: cd .. && sudo rm action_build_biliclient && git clone -b develop https://gitee.com/RobinNotBad/BiliClient.git action_build_biliclient
+      run: cd .. && sudo rm -rf action_build_biliclient && git clone -b develop https://gitee.com/RobinNotBad/BiliClient.git action_build_biliclient
     - name: Troubleshoot errors
       run: ls -l /home/runner/work/action_build_biliclient/action_build_biliclient
     - name: set up JDK 11
