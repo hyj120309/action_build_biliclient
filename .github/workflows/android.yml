@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Git clone BiliClient
-      run: git clone https://gitee.com/RobinNotBad/BiliClient.git
+      run: git clone -b develop https://gitee.com/RobinNotBad/BiliClient.git
     - name: to BiliClient folder
       run: cd BiliClient
     - uses: actions/checkout@v3
