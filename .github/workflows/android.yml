@@ -1,9 +1,9 @@
 name: Android CI
 
 on: |
-    workflow_dispatch
+    repository_dispatch
     schedule:
-    - cron: "0 8 * * *"
+    - cron: "1 6 * * *"
 
 jobs:
   build:
