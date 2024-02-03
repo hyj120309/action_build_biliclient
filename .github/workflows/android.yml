@@ -23,9 +23,12 @@ jobs:
         cache: gradle
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
+    - name: mkdir
+      run: mkdir out
     - name: Build with Gradle
       run: |
           gradle :app:assembleDebug
+          mv app/build/outputs/apk/debug/app-debug.apk out/app-debug.apk
     - name: Upload APK
       uses: actions/upload-artifact@v3
       with:
