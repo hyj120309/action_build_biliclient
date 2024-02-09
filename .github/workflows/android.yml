@@ -3,7 +3,7 @@ name: Android CI
 on: workflow_dispatch
 
 jobs:
-  build:
+  build-debug:
 
     runs-on: ubuntu-latest
 
@@ -22,21 +22,31 @@ jobs:
       run: chmod +x gradlew
     - name: mkdir
       run: mkdir out
-    - name: Build with Gradle(debug)
+    - name: Build with Gradle
       run: |
           ./gradlew :app:assembleDebug
           mv app/build/outputs/apk/debug/app-debug.apk out/app-debug.apk
+  build-release:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Build with Gradle
+      run: |
+          ./gradlew build
+          mv app/build/outputs/apk/debug/app-release.apk out/app-release.apk
+  Upload-apk:
+
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Upload APK(debug)
       uses: actions/upload-artifact@v3
       with:
           name: app-debug
           path: out/app-debug.*
-    - name: Build with Gradle(release)
-      run: |
-          ./gradlew build
-          mv app/build/outputs/apk/debug/app-release.apk out/app-release.apk
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
           name: app-debug
-          path: out/app-release.*          
+          path: out/app-release.*   
