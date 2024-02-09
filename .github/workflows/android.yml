@@ -27,6 +27,12 @@ jobs:
       run: |
           ./gradlew :app:assembleDebug
           mv app/build/outputs/apk/debug/app-debug.apk out/app-debug.apk
+    - name: Upload APK(debug)
+      uses: actions/upload-artifact@v3
+      with:
+          name: app-debug
+          path: out/app-debug.*
+
   build-release:
 
     runs-on: ubuntu-latest
@@ -56,18 +62,9 @@ jobs:
       run: |
           ./gradlew build
           mv app/build/outputs/apk/debug/app-release.apk out/app-release.apk
-  Upload-apk:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Upload APK(debug)
-      uses: actions/upload-artifact@v3
-      with:
-          name: app-debug
-          path: out/app-debug.*
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
           name: app-debug
           path: out/app-release.*   
+
