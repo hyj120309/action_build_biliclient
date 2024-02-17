@@ -58,10 +58,12 @@ jobs:
     - name: sign app
     - run: |
           git clone https://github.com/hyj120309/Keystore.git
+    - name: base64形式的jks密钥
+    - run: env Base64jks = echo openssl base64 < Keystore/biliClient.jks
     - uses: r0adkll/sign-android-release@v1
       with:
           releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64: openssl base64 < Keystore/biliClient.jks
+          signingKeyBase64:  $Base64jks
           alias: key0
           keyStorePassword: 120309
           keyPassword: 120309
