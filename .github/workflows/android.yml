@@ -55,7 +55,7 @@ jobs:
     - name: Build with Gradle
       run: |
           ./gradlew :app:assembleRelease
-          mv app/build/outputs/apk/release/app-releare.apk out/app-release.apk
+          mv app/build/outputs/apk/release/app-release-unsigned.apk out/app-release.apk
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
