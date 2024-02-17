@@ -55,19 +55,7 @@ jobs:
     - name: Build with Gradle
       run: |
           ./gradlew :app:assembleRelease
-    - name: sign app
-    - run: |
-          git clone https://github.com/hyj120309/Keystore.git
-    - name: base64形式的jks密钥
-    - run: env Base64jks = echo openssl base64 < Keystore/biliClient.jks
-    - uses: r0adkll/sign-android-release@v1
-      with:
-          releaseDirectory: app/build/outputs/apk/release
-          signingKeyBase64:  $Base64jks
-          alias: key0
-          keyStorePassword: 120309
-          keyPassword: 120309
-    - run: mv ${{steps.sign_app.outputs.signedReleaseFile}} out/app-release.apk
+          mv app/build/outputs/apk/release/app-releare.apk out/app-release.apk
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
