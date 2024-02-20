@@ -2,6 +2,7 @@ name: Android CI
 
 on: 
   workflow_dispatch:
+  push:
   schedule:
     - cron: '0 * * * *'
 
@@ -33,7 +34,7 @@ jobs:
     - name: Upload APK(debug)
       uses: actions/upload-artifact@v3
       with:
-          name: app-debug
+          name: app
           path: out/app-debug.*
 
   build-release:
@@ -62,6 +63,6 @@ jobs:
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
-          name: app-debug
+          name: app
           path: out/app-release.*   
 
