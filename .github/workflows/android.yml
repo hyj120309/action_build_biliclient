@@ -88,7 +88,7 @@ jobs:
     - name: Build with Gradle
       run: |
           ./gradlew :app:assembleDebug
-          mv app/build/outputs/apk/release/app-debug.apk out/app-debug-huawei.apk
+          mv app/build/outputs/apk/debug/app-debug.apk out/app-debug-huawei.apk
     - name: Upload APK(release)
       uses: actions/upload-artifact@v3
       with:
